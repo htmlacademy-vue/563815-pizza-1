@@ -43,8 +43,8 @@ export default {
 
               <div class="sheet__content dough">
                 <label
-                  class="dough__input dough__input--light"
                   v-for="item in pizza.dough"
+                  class="dough__input dough__input--light"
                   :key="item.id"
                 >
                   <input
@@ -111,8 +111,8 @@ export default {
 
                   <ul class="ingredients__list">
                     <li
-                      class="ingredients__item"
                       v-for="ingredient in pizza.ingredients"
+                      class="ingredients__item"
                       :key="ingredient.id"
                       :style="{
                         '--ingredientIconURL': 'url(' + ingredient.image + ')',
