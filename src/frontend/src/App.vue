@@ -1,14 +1,14 @@
 <script>
-import IndexPage from "./views/Index";
+import Index from "./views/Index";
 
 export default {
   name: "App",
-  components: { IndexPage },
+  components: { Index },
 };
 </script>
 
 <template>
-  <IndexPage />
+  <Index />
 </template>
 
 <style lang="scss">

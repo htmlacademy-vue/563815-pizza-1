@@ -2,7 +2,7 @@
 import pizza from "../static/pizza.json";
 
 export default {
-  name: "IndexPage",
+  name: "Index",
   data: function () {
     return {
       pizza,
@@ -10,6 +10,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <div id="app">
     <header class="header">
