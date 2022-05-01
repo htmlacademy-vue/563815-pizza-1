@@ -34,19 +34,19 @@
     margin-right: 0;
   }
 
-  &--small {
+  &--multiplier-1 {
     span::before {
       background-size: 18px;
     }
   }
 
-  &--normal {
+  &--multiplier-2 {
     span::before {
       background-size: 29px;
     }
   }
 
-  &--big {
+  &--multiplier-3 {
     span::before {
       background-size: 100%;
     }
