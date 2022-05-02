@@ -3,10 +3,11 @@ import pizza from "../static/pizza.json";
 import BasicLayout from "@/layouts/BasicLayout";
 import FormField from "@/common/components/FormField";
 import TextField from "@/common/components/TextField";
+import SheetPanel from "@/common/components/SheetPanel";
 
 export default {
   name: "Index",
-  components: { BasicLayout, FormField, TextField },
+  components: { BasicLayout, FormField, TextField, SheetPanel },
   data: function () {
     return {
       pizza,
@@ -23,10 +24,8 @@ export default {
           <h1 class="title title--big">Конструктор пиццы</h1>
 
           <div class="content__dough">
-            <div class="sheet">
-              <h2 class="title title--small sheet__title">Выберите тесто</h2>
-
-              <div class="sheet__content dough">
+            <SheetPanel title="Выберите тесто">
+              <div class="dough">
                 <label
                   v-for="item in pizza.dough"
                   class="dough__input dough__input--light"
@@ -43,14 +42,12 @@ export default {
                   <span>{{ item.description }}</span>
                 </label>
               </div>
-            </div>
+            </SheetPanel>
           </div>
 
           <div class="content__diameter">
-            <div class="sheet">
-              <h2 class="title title--small sheet__title">Выберите размер</h2>
-
-              <div class="sheet__content diameter">
+            <SheetPanel title="Выберите размер">
+              <div class="diameter">
                 <label
                   v-for="item in pizza.sizes"
                   :key="item.id"
@@ -68,16 +65,12 @@ export default {
                   <span>{{ item.name }}</span>
                 </label>
               </div>
-            </div>
+            </SheetPanel>
           </div>
 
           <div class="content__ingredients">
-            <div class="sheet">
-              <h2 class="title title--small sheet__title">
-                Выберите ингредиенты
-              </h2>
-
-              <div class="sheet__content ingredients">
+            <SheetPanel title="Выберите ингредиенты">
+              <div class="ingredients">
                 <div class="ingredients__sauce">
                   <p>Основной соус:</p>
 
@@ -130,7 +123,7 @@ export default {
                   </ul>
                 </div>
               </div>
-            </div>
+            </SheetPanel>
           </div>
 
           <div class="content__pizza">
