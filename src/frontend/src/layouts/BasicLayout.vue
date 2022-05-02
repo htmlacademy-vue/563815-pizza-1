@@ -13,6 +13,6 @@ export default {
   <div class="basic-layout">
     <PageHeader />
 
-    <slot></slot>
+    <slot />
   </div>
 </template>

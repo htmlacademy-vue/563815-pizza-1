@@ -1,10 +1,12 @@
 <script>
 import pizza from "../static/pizza.json";
 import BasicLayout from "@/layouts/BasicLayout";
+import FormField from "@/common/components/FormField";
+import TextField from "@/common/components/TextField";
 
 export default {
   name: "Index",
-  components: { BasicLayout },
+  components: { BasicLayout, FormField, TextField },
   data: function () {
     return {
       pizza,
@@ -132,14 +134,17 @@ export default {
           </div>
 
           <div class="content__pizza">
-            <label class="input">
-              <span class="visually-hidden">Название пиццы</span>
-              <input
+            <FormField
+              :mods="{ labelHidden: true }"
+              id="pizza-name"
+              label="Название пиццы"
+            >
+              <TextField
+                id="pizza-name"
                 type="text"
-                name="pizza_name"
                 placeholder="Введите название пиццы"
               />
-            </label>
+            </FormField>
 
             <div class="content__constructor">
               <div class="pizza pizza--foundation--big-tomato">
