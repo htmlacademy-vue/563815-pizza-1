@@ -1,4 +1,32 @@
-.header {
+<script>
+export default {
+  name: "PageHeader",
+};
+</script>
+
+<template>
+  <header class="page-header">
+    <div class="page-header__logo">
+      <a href="#" class="logo">
+        <img
+          src="@/assets/img/logo.svg"
+          alt="V!U!E! Pizza logo"
+          width="90"
+          height="40"
+        />
+      </a>
+    </div>
+    <div class="page-header__cart">
+      <a href="#">0 ₽</a>
+    </div>
+    <div class="page-header__user">
+      <a href="#" class="page-header__login"><span>Войти</span></a>
+    </div>
+  </header>
+</template>
+
+<style lang="scss">
+.page-header {
   position: relative;
   z-index: 2;
 
@@ -10,12 +38,12 @@
   box-shadow: $shadow-light;
 }
 
-.header__logo {
+.page-header__logo {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.header__cart {
+.page-header__cart {
   margin-right: 10px;
   margin-left: auto;
 
@@ -24,10 +52,7 @@
 
     display: block;
 
-    padding-top: 21px;
-    padding-right: 15px;
-    padding-bottom: 21px;
-    padding-left: 58px;
+    padding: 21px 15px 21px 58px;
 
     transition: 0.3s;
 
@@ -52,14 +77,11 @@
   }
 }
 
-.header__user {
+.page-header__user {
   a {
     display: block;
 
-    padding-top: 14px;
-    padding-right: 20px;
-    padding-bottom: 14px;
-    padding-left: 20px;
+    padding: 14px 20px;
 
     transition: 0.3s;
 
@@ -101,7 +123,7 @@
   }
 }
 
-.header__login {
+.page-header__login {
   &::after {
     display: inline-block;
 
@@ -109,10 +131,11 @@
     height: 32px;
     margin-left: 8px;
 
-    content: '';
+    content: "";
     vertical-align: middle;
 
     background: url(~@/assets/img/login.svg) no-repeat center;
     background-size: auto 50%;
   }
 }
+</style>
