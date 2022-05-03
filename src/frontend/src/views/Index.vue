@@ -4,10 +4,11 @@ import BasicLayout from "@/layouts/BasicLayout";
 import FormField from "@/common/components/FormField";
 import TextField from "@/common/components/TextField";
 import SheetPanel from "@/common/components/SheetPanel";
+import BasicButton from "@/common/components/BasicButton";
 
 export default {
   name: "Index",
-  components: { BasicLayout, FormField, TextField, SheetPanel },
+  components: { BasicLayout, FormField, TextField, SheetPanel, BasicButton },
   data: function () {
     return {
       pizza,
@@ -151,7 +152,7 @@ export default {
 
             <div class="content__result">
               <p>Итого: 0 ₽</p>
-              <button type="button" class="button" disabled>Готовьте!</button>
+              <BasicButton :disabled="true">Готовьте!</BasicButton>
             </div>
           </div>
         </div>

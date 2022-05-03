@@ -1,24 +1,40 @@
-.button {
-  $bl: &;
+<script>
+export default {
+  props: {
+    type: {
+      type: String,
+      default: "button",
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
 
+<template>
+  <button :type="type" class="basic-button" :disabled="disabled">
+    <slot />
+  </button>
+</template>
+
+<style lang="scss">
+.basic-button {
   @include b-s18-h21;
   font-family: inherit;
   display: block;
-
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
   cursor: pointer;
   transition: 0.3s;
   text-align: center;
-
   color: $white;
   border: none;
   border-radius: 8px;
   outline: none;
   box-shadow: $shadow-medium;
-
   background-color: $green-500;
 
   &:hover:not(:active):not(:disabled) {
@@ -103,3 +119,4 @@
     color: $green-500;
   }
 }
+</style>
