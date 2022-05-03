@@ -5,10 +5,18 @@ import FormField from "@/common/components/FormField";
 import TextField from "@/common/components/TextField";
 import SheetPanel from "@/common/components/SheetPanel";
 import BasicButton from "@/common/components/BasicButton";
+import RadioField from "@/common/components/RadioField";
 
 export default {
   name: "Index",
-  components: { BasicLayout, FormField, TextField, SheetPanel, BasicButton },
+  components: {
+    BasicLayout,
+    FormField,
+    TextField,
+    SheetPanel,
+    BasicButton,
+    RadioField,
+  },
   data: function () {
     return {
       pizza,
@@ -75,14 +83,17 @@ export default {
                 <div class="ingredients__sauce">
                   <p>Основной соус:</p>
 
-                  <label
+                  <div
                     v-for="item in pizza.sauces"
                     :key="item.id"
-                    class="radio ingredients__input"
+                    class="ingredients__input"
                   >
-                    <input type="radio" name="sauce" :value="item.id" checked />
-                    <span>{{ item.name }}</span>
-                  </label>
+                    <RadioField
+                      :label="item.name"
+                      :checked="true"
+                      :value="item.id"
+                    />
+                  </div>
                 </div>
 
                 <div class="ingredients__filling">
