@@ -1,26 +1,58 @@
-.counter {
-  display: flex;
+<script>
+export default {
+  name: "BasicCounter",
+  props: {
+    mix: {
+      type: String,
+      default: null,
+    },
+  },
+};
+</script>
 
+<template>
+  <div :class="['basic-counter', mix]">
+    <button
+      type="button"
+      class="basic-counter__button basic-counter__button--minus"
+      disabled
+    >
+      <span class="visually-hidden">Меньше</span>
+    </button>
+
+    <input
+      type="text"
+      name="basic-counter"
+      class="basic-counter__input"
+      value="0"
+    />
+
+    <button
+      type="button"
+      class="basic-counter__button basic-counter__button--plus"
+    >
+      <span class="visually-hidden">Больше</span>
+    </button>
+  </div>
+</template>
+
+<style lang="scss">
+.basic-counter {
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.counter__button {
-  $el: &;
+.basic-counter__button {
   $size_icon: 50%;
-
   position: relative;
-
   display: block;
-
   width: 16px;
   height: 16px;
   margin: 0;
   padding: 0;
-
   cursor: pointer;
   transition: 0.3s;
-
   border: none;
   border-radius: 50%;
   outline: none;
@@ -30,12 +62,9 @@
 
     &::before {
       @include p_center-all;
-
       width: $size_icon;
       height: 2px;
-
       content: "";
-
       border-radius: 2px;
       background-color: $black;
     }
@@ -66,25 +95,19 @@
 
     &::before {
       @include p_center-all;
-
       width: $size_icon;
       height: 2px;
-
       content: "";
-
       border-radius: 2px;
       background-color: $white;
     }
 
     &::after {
       @include p_center-all;
-
       width: $size_icon;
       height: 2px;
-
       content: "";
       transform: translate(-50%, -50%) rotate(90deg);
-
       border-radius: 2px;
       background-color: $white;
     }
@@ -103,7 +126,6 @@
 
     &:disabled {
       cursor: default;
-
       opacity: 0.3;
     }
   }
@@ -121,16 +143,13 @@
   }
 }
 
-.counter__input {
+.basic-counter__input {
   @include r-s14-h16;
-
   box-sizing: border-box;
   width: 22px;
   margin: 0;
   padding: 0 3px;
-
   text-align: center;
-
   color: $black;
   border: none;
   border-radius: 10px;
@@ -141,3 +160,4 @@
     box-shadow: inset $shadow-regular;
   }
 }
+</style>
