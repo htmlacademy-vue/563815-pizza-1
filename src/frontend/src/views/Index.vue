@@ -9,10 +9,12 @@ import RadioField from "@/common/components/RadioField";
 import PizzaPreview from "@/common/components/PizzaPreview";
 import BasicCounter from "@/common/components/BasicCounter";
 import DoughSelector from "@/common/components/DoughSelector";
+import DiameterSelector from "@/common/components/DiameterSelector";
 
 export default {
   name: "Index",
   components: {
+    DiameterSelector,
     DoughSelector,
     BasicCounter,
     PizzaPreview,
@@ -46,24 +48,7 @@ export default {
 
           <div class="content__diameter">
             <SheetPanel title="Выберите размер">
-              <div class="diameter">
-                <label
-                  v-for="item in pizza.sizes"
-                  :key="item.id"
-                  :class="[
-                    'diameter__input',
-                    `diameter__input--multiplier-${item.multiplier}`,
-                  ]"
-                >
-                  <input
-                    type="radio"
-                    name="diameter"
-                    :value="item.multiplier"
-                    class="visually-hidden"
-                  />
-                  <span>{{ item.name }}</span>
-                </label>
-              </div>
+              <DiameterSelector />
             </SheetPanel>
           </div>
 
