@@ -6,10 +6,12 @@ import TextField from "@/common/components/TextField";
 import SheetPanel from "@/common/components/SheetPanel";
 import BasicButton from "@/common/components/BasicButton";
 import RadioField from "@/common/components/RadioField";
+import PizzaPreview from "@/common/components/PizzaPreview";
 
 export default {
   name: "Index",
   components: {
+    PizzaPreview,
     BasicLayout,
     FormField,
     TextField,
@@ -152,13 +154,7 @@ export default {
             </FormField>
 
             <div class="content__constructor">
-              <div class="pizza pizza--foundation--big-tomato">
-                <div class="pizza__wrapper">
-                  <div class="pizza__filling pizza__filling--ananas"></div>
-                  <div class="pizza__filling pizza__filling--bacon"></div>
-                  <div class="pizza__filling pizza__filling--cheddar"></div>
-                </div>
-              </div>
+              <PizzaPreview />
             </div>
 
             <div class="content__result">

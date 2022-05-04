@@ -1,11 +1,25 @@
+<script>
+export default {
+  name: "PizzaPreview",
+};
+</script>
+
+<template>
+  <div class="pizza pizza--foundation--big-tomato">
+    <div class="pizza__wrapper">
+      <div class="pizza__filling pizza__filling--ananas"></div>
+      <div class="pizza__filling pizza__filling--bacon"></div>
+      <div class="pizza__filling pizza__filling--cheddar"></div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
 .pizza {
   position: relative;
-
   display: block;
-
   box-sizing: border-box;
   width: 100%;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -36,12 +50,9 @@
   position: absolute;
   top: 0;
   left: 0;
-
   display: block;
-
   width: 100%;
   height: 100%;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -114,3 +125,4 @@
     background-image: url("~@/assets/img/filling-big/tomatoes.svg");
   }
 }
+</style>
