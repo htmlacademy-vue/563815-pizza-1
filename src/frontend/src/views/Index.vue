@@ -8,10 +8,12 @@ import BasicButton from "@/common/components/BasicButton";
 import RadioField from "@/common/components/RadioField";
 import PizzaPreview from "@/common/components/PizzaPreview";
 import BasicCounter from "@/common/components/BasicCounter";
+import DoughSelector from "@/common/components/DoughSelector";
 
 export default {
   name: "Index",
   components: {
+    DoughSelector,
     BasicCounter,
     PizzaPreview,
     BasicLayout,
@@ -38,23 +40,7 @@ export default {
 
           <div class="content__dough">
             <SheetPanel title="Выберите тесто">
-              <div class="dough">
-                <label
-                  v-for="item in pizza.dough"
-                  class="dough__input dough__input--light"
-                  :key="item.id"
-                >
-                  <input
-                    type="radio"
-                    name="dought"
-                    :value="item.id"
-                    class="visually-hidden"
-                    checked
-                  />
-                  <b>{{ item.name }}</b>
-                  <span>{{ item.description }}</span>
-                </label>
-              </div>
+              <DoughSelector />
             </SheetPanel>
           </div>
 
