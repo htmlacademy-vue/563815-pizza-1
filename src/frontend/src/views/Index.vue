@@ -9,10 +9,12 @@ import PizzaPreview from "@/common/components/PizzaPreview";
 import DoughSelector from "@/common/components/DoughSelector";
 import DiameterSelector from "@/common/components/DiameterSelector";
 import IngredientsSelector from "@/common/components/IngredientsSelector";
+import BasicTitle from "@/common/components/BasicTitle";
 
 export default {
   name: "Index",
   components: {
+    BasicTitle,
     IngredientsSelector,
     DiameterSelector,
     DoughSelector,
@@ -36,7 +38,7 @@ export default {
     <main class="content">
       <form action="#" method="post">
         <div class="content__wrapper">
-          <h1 class="title title--big">Конструктор пиццы</h1>
+          <BasicTitle :mods="{ size: 'big' }">Конструктор пиццы</BasicTitle>
 
           <div class="content__dough">
             <SheetPanel title="Выберите тесто">
