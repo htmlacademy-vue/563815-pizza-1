@@ -24,7 +24,13 @@ export default {
   data: function () {
     return {
       pizza,
+      pizzaTitle: "",
     };
+  },
+  methods: {
+    handlePizzaTitleInput(value) {
+      this.pizzaTitle = value;
+    },
   },
 };
 </script>
@@ -56,6 +62,8 @@ export default {
         label="Название пиццы"
       >
         <TextField
+          :value="pizzaTitle"
+          :onInput="handlePizzaTitleInput"
           id="pizza-name"
           type="text"
           placeholder="Введите название пиццы"

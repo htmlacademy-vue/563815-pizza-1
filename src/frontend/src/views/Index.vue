@@ -1,5 +1,4 @@
 <script>
-import pizza from "../static/pizza.json";
 import BasicLayout from "@/layouts/BasicLayout";
 import BasicTitle from "@/common/components/BasicTitle";
 import PizzaBuilder from "@/modules/PizzaBuilder/PizzaBuilder";
@@ -10,11 +9,6 @@ export default {
     PizzaBuilder,
     BasicTitle,
     BasicLayout,
-  },
-  data: function () {
-    return {
-      pizza,
-    };
   },
 };
 </script>

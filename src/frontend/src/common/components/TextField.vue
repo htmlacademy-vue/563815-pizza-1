@@ -14,6 +14,19 @@ export default {
       type: String,
       default: "",
     },
+    value: {
+      type: String,
+      required: true,
+    },
+    onInput: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleInput(event) {
+      if (this.onInput) this.onInput(event.target.value);
+    },
   },
 };
 </script>
@@ -24,6 +37,8 @@ export default {
       :id="id"
       :type="type"
       :placeholder="placeholder"
+      :value="value"
+      @input="this.handleInput"
       class="text-field__input"
     />
   </div>
