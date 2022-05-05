@@ -14,14 +14,21 @@ export default {
         default: null,
       },
     },
+    mix: {
+      type: String,
+      default: null,
+    },
   },
 };
 </script>
 
 <template>
-  <h1 :class="['title', mods.size ? `title--size-${mods.size}` : '']">
+  <component
+    :is="tag"
+    :class="['title', mods.size ? `title--size-${mods.size}` : '', mix]"
+  >
     <slot />
-  </h1>
+  </component>
 </template>
 
 <style lang="scss">

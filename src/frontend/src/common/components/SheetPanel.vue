@@ -1,6 +1,8 @@
 <script>
+import BasicTitle from "@/common/components/BasicTitle";
 export default {
   name: "SheetPanel",
+  components: { BasicTitle },
   props: {
     title: {
       type: String,
@@ -12,9 +14,9 @@ export default {
 
 <template>
   <div class="sheet-panel">
-    <h2 v-if="title" class="title title--small sheet-panel__title">
+    <BasicTitle v-if="title" :mods="{ size: 'small' }" mix="sheet-panel__title">
       {{ title }}
-    </h2>
+    </BasicTitle>
     <div class="sheet-panel__content">
       <slot />
     </div>
