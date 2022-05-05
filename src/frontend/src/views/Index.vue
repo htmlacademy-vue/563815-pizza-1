@@ -5,25 +5,23 @@ import FormField from "@/common/components/FormField";
 import TextField from "@/common/components/TextField";
 import SheetPanel from "@/common/components/SheetPanel";
 import BasicButton from "@/common/components/BasicButton";
-import RadioField from "@/common/components/RadioField";
 import PizzaPreview from "@/common/components/PizzaPreview";
-import BasicCounter from "@/common/components/BasicCounter";
 import DoughSelector from "@/common/components/DoughSelector";
 import DiameterSelector from "@/common/components/DiameterSelector";
+import IngredientsSelector from "@/common/components/IngredientsSelector";
 
 export default {
   name: "Index",
   components: {
+    IngredientsSelector,
     DiameterSelector,
     DoughSelector,
-    BasicCounter,
     PizzaPreview,
     BasicLayout,
     FormField,
     TextField,
     SheetPanel,
     BasicButton,
-    RadioField,
   },
   data: function () {
     return {
@@ -54,42 +52,7 @@ export default {
 
           <div class="content__ingredients">
             <SheetPanel title="Выберите ингредиенты">
-              <div class="ingredients">
-                <div class="ingredients__sauce">
-                  <p>Основной соус:</p>
-
-                  <div
-                    v-for="item in pizza.sauces"
-                    :key="item.id"
-                    class="ingredients__input"
-                  >
-                    <RadioField
-                      :label="item.name"
-                      :checked="true"
-                      :value="item.id"
-                    />
-                  </div>
-                </div>
-
-                <div class="ingredients__filling">
-                  <p>Начинка:</p>
-
-                  <ul class="ingredients__list">
-                    <li
-                      v-for="ingredient in pizza.ingredients"
-                      class="ingredients__item"
-                      :key="ingredient.id"
-                      :style="{
-                        '--ingredientIconURL': 'url(' + ingredient.image + ')',
-                      }"
-                    >
-                      <span class="filling">{{ ingredient.name }}</span>
-
-                      <BasicCounter mix="ingredients__counter" />
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <IngredientsSelector />
             </SheetPanel>
           </div>
 
