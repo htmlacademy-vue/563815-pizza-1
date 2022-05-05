@@ -21,13 +21,7 @@ export default {
 
 <template>
   <BasicLayout>
-    <main class="content">
-      <form action="#" method="post">
-        <div class="content__wrapper">
-          <BasicTitle :mods="{ size: 'big' }">Конструктор пиццы</BasicTitle>
-          <PizzaBuilder />
-        </div>
-      </form>
-    </main>
+    <BasicTitle :mods="{ size: 'big' }">Конструктор пиццы</BasicTitle>
+    <PizzaBuilder />
   </BasicLayout>
 </template>

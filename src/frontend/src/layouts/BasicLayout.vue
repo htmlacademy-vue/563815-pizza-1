@@ -13,6 +13,10 @@ export default {
   <div class="basic-layout">
     <PageHeader />
 
-    <slot />
+    <main class="content">
+      <div class="content__wrapper">
+        <slot />
+      </div>
+    </main>
   </div>
 </template>
