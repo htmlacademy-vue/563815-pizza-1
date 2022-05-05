@@ -25,11 +25,15 @@ export default {
     return {
       pizza,
       pizzaTitle: "",
+      pizzaSize: pizza.sizes[0],
     };
   },
   methods: {
     handlePizzaTitleInput(value) {
       this.pizzaTitle = value;
+    },
+    handlePizzaSizeChange(value) {
+      this.pizzaSize = value;
     },
   },
 };
@@ -45,7 +49,10 @@ export default {
 
     <div class="pizza-builder__diameter">
       <SheetPanel title="Выберите размер">
-        <DiameterSelector />
+        <DiameterSelector
+          :value="pizzaSize.multiplier"
+          :onChange="this.handlePizzaSizeChange"
+        />
       </SheetPanel>
     </div>
 

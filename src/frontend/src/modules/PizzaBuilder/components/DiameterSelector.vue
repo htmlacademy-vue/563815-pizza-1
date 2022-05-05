@@ -8,6 +8,25 @@ export default {
       pizza,
     };
   },
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
+    onChange: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleChange(event) {
+      const sizeData = pizza.sizes.find(
+        (size) => size.multiplier === event.target.value
+      );
+
+      if (sizeData) this.onChange(sizeData);
+    },
+  },
 };
 </script>
 
@@ -22,9 +41,10 @@ export default {
       ]"
     >
       <input
-        type="radio"
-        name="diameter"
         :value="item.multiplier"
+        :checked="item.multiplier === value"
+        @change="handleChange"
+        type="radio"
         class="diameter__input-control visually-hidden"
       />
       <span class="diameter__name">{{ item.name }}</span>
