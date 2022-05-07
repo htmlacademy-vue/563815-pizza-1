@@ -26,6 +26,7 @@ export default {
       pizza,
       pizzaTitle: "",
       pizzaSize: pizza.sizes[0],
+      pizzaDough: pizza.dough[0],
     };
   },
   methods: {
@@ -35,6 +36,9 @@ export default {
     handlePizzaSizeChange(value) {
       this.pizzaSize = value;
     },
+    handlePizzaDoughChange(value) {
+      this.pizzaDough = value;
+    },
   },
 };
 </script>
@@ -43,7 +47,10 @@ export default {
   <div class="pizza-builder">
     <div class="pizza-builder__dough">
       <SheetPanel title="Выберите тесто">
-        <DoughSelector />
+        <DoughSelector
+          :value="pizzaDough.id"
+          :onChange="this.handlePizzaDoughChange"
+        />
       </SheetPanel>
     </div>
 

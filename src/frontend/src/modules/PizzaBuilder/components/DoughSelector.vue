@@ -8,6 +8,25 @@ export default {
       pizza,
     };
   },
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
+    onChange: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleChange(event) {
+      const doughData = pizza.dough.find(
+        (dough) => dough.id === event.target.value
+      );
+
+      if (doughData) this.onChange(doughData);
+    },
+  },
 };
 </script>
 
@@ -15,17 +34,22 @@ export default {
   <div class="dough-selector">
     <label
       v-for="item in pizza.dough"
-      class="dough-selector__input dough-selector__input--light"
+      class="dough-selector__input"
       :key="item.id"
     >
       <input
-        type="radio"
-        name="dough-selector"
         :value="item.id"
+        :checked="item.id === value"
+        @change="handleChange"
+        type="radio"
         class="dough-selector__input-control visually-hidden"
-        checked
       />
-      <b class="dough-selector__name">{{ item.name }}</b>
+      <b
+        :style="{ '--dough-image-url': `url(${item.image})` }"
+        class="dough-selector__name"
+      >
+        {{ item.name }}
+      </b>
       <span class="dough-selector__description">{{ item.description }}</span>
     </label>
   </div>
@@ -44,22 +68,6 @@ export default {
   margin-bottom: 20px;
   padding-left: 50px;
   cursor: pointer;
-
-  &--light {
-    .dough-selector__name {
-      &::before {
-        background-image: url("~@/assets/img/dough-light.svg");
-      }
-    }
-  }
-
-  &--large {
-    .dough-selector__name {
-      &::before {
-        background-image: url("~@/assets/img/dough-large.svg");
-      }
-    }
-  }
 
   &:hover {
     .dough-selector__name::before {
@@ -81,6 +89,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-image: var(--dough-image-url);
   }
 }
 
