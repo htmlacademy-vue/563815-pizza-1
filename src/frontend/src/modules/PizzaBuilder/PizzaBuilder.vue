@@ -58,6 +58,23 @@ export default {
       }
     },
   },
+  computed: {
+    price() {
+      const sizePrice = Number(this.pizzaSize.multiplier);
+      const { price: doughPrice } = this.pizzaDough;
+      const { price: saucePrice } = this.pizzaSauce;
+      const ingredientsPrice = this.pizzaIngredients.reduce(
+        (acc, ingredient) => {
+          return ingredient.count > 0
+            ? acc + ingredient.price * ingredient.count
+            : acc;
+        },
+        0
+      );
+
+      return sizePrice * (doughPrice + saucePrice + ingredientsPrice);
+    },
+  },
 };
 </script>
 
@@ -112,7 +129,7 @@ export default {
       </div>
 
       <div class="pizza-builder__result">
-        <p>Итого: 0 ₽</p>
+        <p>Итого: {{ price }} ₽</p>
         <BasicButton :disabled="true">Готовьте!</BasicButton>
       </div>
     </div>
