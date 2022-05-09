@@ -6,6 +6,29 @@ export default {
       type: String,
       default: null,
     },
+    itemId: {
+      type: String,
+      required: true,
+    },
+    onChange: {
+      type: Function,
+      required: true,
+    },
+    count: {
+      type: Number,
+      required: true,
+    },
+  },
+  methods: {
+    handleCountIncrease() {
+      this.onChange(this.itemId, this.count + 1);
+    },
+    handleCountDecrease() {
+      this.onChange(this.itemId, this.count - 1);
+    },
+    handleCountInput(event) {
+      this.onChange(this.itemId, event.target.value);
+    },
   },
 };
 </script>
@@ -13,21 +36,25 @@ export default {
 <template>
   <div :class="['basic-counter', mix]">
     <button
+      :disabled="count === 0"
+      @click="handleCountDecrease"
       type="button"
       class="basic-counter__button basic-counter__button--minus"
-      disabled
     >
       <span class="visually-hidden">Меньше</span>
     </button>
 
     <input
-      type="text"
+      :value="count"
+      @change="handleCountInput"
       name="basic-counter"
       class="basic-counter__input"
-      value="0"
+      type="text"
     />
 
     <button
+      :disabled="count === 3"
+      @click="handleCountIncrease"
       type="button"
       class="basic-counter__button basic-counter__button--plus"
     >

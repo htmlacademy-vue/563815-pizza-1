@@ -9,6 +9,11 @@ import DoughSelector from "@/modules/PizzaBuilder/components/DoughSelector";
 import DiameterSelector from "@/modules/PizzaBuilder/components/DiameterSelector";
 import IngredientsSelector from "@/modules/PizzaBuilder/components/IngredientsSelector";
 
+const initialIngredientsState = pizza.ingredients.map((item) => ({
+  ...item,
+  count: 0,
+}));
+
 export default {
   name: "PizzaBuilder",
   components: {
@@ -23,10 +28,11 @@ export default {
   },
   data: function () {
     return {
-      pizza,
       pizzaTitle: "",
       pizzaSize: pizza.sizes[0],
       pizzaDough: pizza.dough[0],
+      pizzaSauce: pizza.sauces[0],
+      pizzaIngredients: initialIngredientsState,
     };
   },
   methods: {
@@ -38,6 +44,18 @@ export default {
     },
     handlePizzaDoughChange(value) {
       this.pizzaDough = value;
+    },
+    handlePizzaSauceChange(value) {
+      this.pizzaSauce = value;
+    },
+    handleIngredientsChange(id, value) {
+      const index = this.pizzaIngredients.findIndex((i) => i.id === id);
+
+      if (index >= 0) {
+        const newItems = [...this.pizzaIngredients];
+        newItems[index].count = Number(value);
+        this.pizzaIngredients = newItems;
+      }
     },
   },
 };
@@ -65,7 +83,12 @@ export default {
 
     <div class="pizza-builder__ingredients">
       <SheetPanel title="Выберите ингредиенты">
-        <IngredientsSelector />
+        <IngredientsSelector
+          :sauce="pizzaSauce.id"
+          :onSauceChange="handlePizzaSauceChange"
+          :ingredients="pizzaIngredients"
+          :onIngredientsChange="handleIngredientsChange"
+        />
       </SheetPanel>
     </div>
 

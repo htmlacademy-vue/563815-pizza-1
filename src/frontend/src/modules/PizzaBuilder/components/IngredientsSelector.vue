@@ -11,6 +11,36 @@ export default {
       pizza,
     };
   },
+  props: {
+    sauce: {
+      type: String,
+      required: true,
+    },
+    onSauceChange: {
+      type: Function,
+      required: true,
+    },
+    ingredients: {
+      type: Array,
+      required: true,
+    },
+    onIngredientsChange: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleIngredientChange(id, value) {
+      this.onIngredientsChange(id, value);
+    },
+    handlePizzaSauceChange(event) {
+      const sauceData = pizza.sauces.find(
+        (sauce) => sauce.id === event.target.value
+      );
+
+      if (sauceData) this.onSauceChange(sauceData);
+    },
+  },
 };
 </script>
 
@@ -24,7 +54,12 @@ export default {
         :key="item.id"
         class="ingredients-selector__input"
       >
-        <RadioField :label="item.name" :checked="true" :value="item.id" />
+        <RadioField
+          :label="item.name"
+          :checked="item.id === sauce"
+          :value="item.id"
+          :onChange="handlePizzaSauceChange"
+        />
       </div>
     </div>
 
@@ -33,7 +68,7 @@ export default {
 
       <ul class="ingredients-selector__list">
         <li
-          v-for="ingredient in pizza.ingredients"
+          v-for="ingredient in ingredients"
           class="ingredients-selector__item"
           :key="ingredient.id"
           :style="{
@@ -42,7 +77,12 @@ export default {
         >
           <span class="filling">{{ ingredient.name }}</span>
 
-          <BasicCounter mix="ingredients-selector__counter" />
+          <BasicCounter
+            :itemId="ingredient.id"
+            :onChange="handleIngredientChange"
+            :count="ingredient.count"
+            mix="ingredients-selector__counter"
+          />
         </li>
       </ul>
     </div>

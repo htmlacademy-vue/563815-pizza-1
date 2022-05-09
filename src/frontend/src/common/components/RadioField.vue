@@ -3,7 +3,7 @@ export default {
   name: "RadioField",
   props: {
     value: {
-      type: Number,
+      type: String,
       required: true,
     },
     checked: {
@@ -12,6 +12,10 @@ export default {
     },
     label: {
       type: String,
+      required: true,
+    },
+    onChange: {
+      type: Function,
       required: true,
     },
   },
@@ -23,6 +27,7 @@ export default {
     <input
       :value="value"
       :checked="checked"
+      @change="onChange"
       type="radio"
       class="radio__input"
     />
