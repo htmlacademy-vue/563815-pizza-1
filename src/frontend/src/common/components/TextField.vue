@@ -18,14 +18,10 @@ export default {
       type: String,
       required: true,
     },
-    onInput: {
-      type: Function,
-      required: true,
-    },
   },
   methods: {
     handleInput(event) {
-      if (this.onInput) this.onInput(event.target.value);
+      this.$emit("input", event.target.value);
     },
   },
 };

@@ -48,12 +48,12 @@ export default {
     handlePizzaSauceChange(value) {
       this.pizzaSauce = value;
     },
-    handleIngredientsChange(id, value) {
+    handleIngredientsChange({ id, count }) {
       const index = this.pizzaIngredients.findIndex((i) => i.id === id);
 
       if (index >= 0) {
         const newItems = [...this.pizzaIngredients];
-        newItems[index].count = Number(value);
+        newItems[index].count = Number(count);
         this.pizzaIngredients = newItems;
       }
     },
@@ -61,7 +61,7 @@ export default {
       const id = event.dataTransfer.getData("ingredientId");
       const count = Number(event.dataTransfer.getData("ingredientCount"));
 
-      this.handleIngredientsChange(id, count + 1);
+      this.handleIngredientsChange({ id, count: count + 1 });
     },
   },
   computed: {
@@ -69,6 +69,7 @@ export default {
       const areThereIngredients = this.pizzaIngredients.some(
         (ingr) => ingr.count > 0
       );
+
       const isThereTitle = this.pizzaTitle.length > 0;
 
       return areThereIngredients && isThereTitle;
@@ -98,7 +99,7 @@ export default {
       <SheetPanel title="Выберите тесто">
         <DoughSelector
           :value="pizzaDough.id"
-          :onChange="this.handlePizzaDoughChange"
+          @change="this.handlePizzaDoughChange"
         />
       </SheetPanel>
     </div>
@@ -107,7 +108,7 @@ export default {
       <SheetPanel title="Выберите размер">
         <DiameterSelector
           :value="pizzaSize.multiplier"
-          :onChange="this.handlePizzaSizeChange"
+          @change="this.handlePizzaSizeChange"
         />
       </SheetPanel>
     </div>
@@ -116,9 +117,9 @@ export default {
       <SheetPanel title="Выберите ингредиенты">
         <IngredientsSelector
           :sauce="pizzaSauce.id"
-          :onSauceChange="handlePizzaSauceChange"
+          @sauceChange="handlePizzaSauceChange"
           :ingredients="pizzaIngredients"
-          :onIngredientsChange="handleIngredientsChange"
+          @ingredientsChange="handleIngredientsChange"
         />
       </SheetPanel>
     </div>
@@ -131,7 +132,7 @@ export default {
       >
         <TextField
           :value="pizzaTitle"
-          :onInput="handlePizzaTitleInput"
+          @input="handlePizzaTitleInput"
           id="pizza-name"
           type="text"
           placeholder="Введите название пиццы"

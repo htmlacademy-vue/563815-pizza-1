@@ -14,20 +14,21 @@ export default {
       type: String,
       required: true,
     },
-    onChange: {
-      type: Function,
-      required: true,
+  },
+  methods: {
+    handleChange(event) {
+      this.$emit("change", event);
     },
   },
 };
 </script>
 
 <template>
-  <label :class="['radio']">
+  <label class="radio">
     <input
       :value="value"
       :checked="checked"
-      @change="onChange"
+      @change="handleChange"
       type="radio"
       class="radio__input"
     />

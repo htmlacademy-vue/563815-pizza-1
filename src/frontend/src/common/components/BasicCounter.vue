@@ -10,10 +10,6 @@ export default {
       type: String,
       required: true,
     },
-    onChange: {
-      type: Function,
-      required: true,
-    },
     count: {
       type: Number,
       required: true,
@@ -21,13 +17,16 @@ export default {
   },
   methods: {
     handleCountIncrease() {
-      this.onChange(this.itemId, this.count + 1);
+      this.$emit("change", { id: this.itemId, count: this.count + 1 });
     },
     handleCountDecrease() {
-      this.onChange(this.itemId, this.count - 1);
+      this.$emit("change", { id: this.itemId, count: this.count - 1 });
     },
     handleCountInput(event) {
-      this.onChange(this.itemId, event.target.value);
+      this.$emit("change", {
+        id: this.itemId,
+        count: event.target.value,
+      });
     },
   },
 };

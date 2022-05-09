@@ -13,10 +13,6 @@ export default {
       type: String,
       required: true,
     },
-    onChange: {
-      type: Function,
-      required: true,
-    },
   },
   methods: {
     handleChange(event) {
@@ -24,7 +20,7 @@ export default {
         (size) => size.multiplier === event.target.value
       );
 
-      if (sizeData) this.onChange(sizeData);
+      if (sizeData) this.$emit("change", sizeData);
     },
   },
 };

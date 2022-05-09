@@ -16,29 +16,21 @@ export default {
       type: String,
       required: true,
     },
-    onSauceChange: {
-      type: Function,
-      required: true,
-    },
     ingredients: {
       type: Array,
       required: true,
     },
-    onIngredientsChange: {
-      type: Function,
-      required: true,
-    },
   },
   methods: {
-    handleIngredientChange(id, value) {
-      this.onIngredientsChange(id, value);
+    handleIngredientChange({ id, count }) {
+      this.$emit("ingredientsChange", { id, count });
     },
     handlePizzaSauceChange(event) {
       const sauceData = pizza.sauces.find(
         (sauce) => sauce.id === event.target.value
       );
 
-      if (sauceData) this.onSauceChange(sauceData);
+      if (sauceData) this.$emit("sauceChange", sauceData);
     },
     handleDragStart(event, id, count) {
       event.dataTransfer.setData("ingredientId", id);
@@ -62,7 +54,7 @@ export default {
           :label="item.name"
           :checked="item.id === sauce"
           :value="item.id"
-          :onChange="handlePizzaSauceChange"
+          @change="handlePizzaSauceChange"
         />
       </div>
     </div>
@@ -89,8 +81,8 @@ export default {
           >
 
           <BasicCounter
+            @change="handleIngredientChange"
             :itemId="ingredient.id"
-            :onChange="handleIngredientChange"
             :count="ingredient.count"
             mix="ingredients-selector__counter"
           />

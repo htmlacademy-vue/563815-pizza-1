@@ -13,10 +13,6 @@ export default {
       type: String,
       required: true,
     },
-    onChange: {
-      type: Function,
-      required: true,
-    },
   },
   methods: {
     handleChange(event) {
@@ -24,7 +20,7 @@ export default {
         (dough) => dough.id === event.target.value
       );
 
-      if (doughData) this.onChange(doughData);
+      if (doughData) this.$emit("change", doughData);
     },
   },
 };
