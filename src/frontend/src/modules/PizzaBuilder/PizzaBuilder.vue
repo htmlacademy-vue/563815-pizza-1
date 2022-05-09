@@ -53,7 +53,14 @@ export default {
 
       if (index >= 0) {
         const newItems = [...this.pizzaIngredients];
-        newItems[index].count = Number(count);
+        if (count > 3) {
+          newItems[index].count = 3;
+        } else if (count < 0) {
+          newItems[index].count = 0;
+        } else {
+          newItems[index].count = Number(count);
+        }
+
         this.pizzaIngredients = newItems;
       }
     },
