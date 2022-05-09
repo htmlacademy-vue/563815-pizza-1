@@ -30,15 +30,15 @@ export default {
   <div class="dough-selector">
     <label
       v-for="item in pizza.dough"
-      class="dough-selector__input"
       :key="item.id"
+      class="dough-selector__input"
     >
       <input
         :value="item.id"
         :checked="item.id === value"
-        @change="handleChange"
         type="radio"
         class="dough-selector__input-control visually-hidden"
+        @change="handleChange"
       />
       <b
         :style="{ '--dough-image-url': `url(${item.image})` }"

@@ -39,9 +39,9 @@ export default {
       <input
         :value="item.multiplier"
         :checked="item.multiplier === value"
-        @change="handleChange"
         type="radio"
         class="diameter__input-control visually-hidden"
+        @change="handleChange"
       />
       <span class="diameter__name">{{ item.name }}</span>
     </label>

@@ -34,8 +34,8 @@ export default {
       :type="type"
       :placeholder="placeholder"
       :value="value"
-      @input="this.handleInput"
       class="text-field__input"
+      @input="this.handleInput"
     />
   </div>
 </template>

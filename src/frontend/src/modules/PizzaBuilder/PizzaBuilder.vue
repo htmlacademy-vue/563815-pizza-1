@@ -117,8 +117,8 @@ export default {
       <SheetPanel title="Выберите ингредиенты">
         <IngredientsSelector
           :sauce="pizzaSauce.id"
-          @sauceChange="handlePizzaSauceChange"
           :ingredients="pizzaIngredients"
+          @sauceChange="handlePizzaSauceChange"
           @ingredientsChange="handleIngredientsChange"
         />
       </SheetPanel>
@@ -126,24 +126,24 @@ export default {
 
     <div class="pizza-builder__pizza">
       <FormField
-        :mods="{ labelHidden: true }"
         id="pizza-name"
+        :mods="{ labelHidden: true }"
         label="Название пиццы"
       >
         <TextField
-          :value="pizzaTitle"
-          @input="handlePizzaTitleInput"
           id="pizza-name"
+          :value="pizzaTitle"
           type="text"
           placeholder="Введите название пиццы"
+          @input="handlePizzaTitleInput"
         />
       </FormField>
 
       <div
+        class="pizza-builder__constructor"
         @dragenter.prevent
         @dragover.prevent
         @drop="handleIngredientDrop"
-        class="pizza-builder__constructor"
       >
         <PizzaPreview
           :ingredients="pizzaIngredients"

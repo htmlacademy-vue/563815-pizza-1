@@ -36,26 +36,26 @@ export default {
   <div :class="['basic-counter', mix]">
     <button
       :disabled="count === 0"
-      @click="handleCountDecrease"
       type="button"
       class="basic-counter__button basic-counter__button--minus"
+      @click="handleCountDecrease"
     >
       <span class="visually-hidden">Меньше</span>
     </button>
 
     <input
       :value="count"
-      @change="handleCountInput"
       name="basic-counter"
       class="basic-counter__input"
       type="text"
+      @change="handleCountInput"
     />
 
     <button
       :disabled="count === 3"
-      @click="handleCountIncrease"
       type="button"
       class="basic-counter__button basic-counter__button--plus"
+      @click="handleCountIncrease"
     >
       <span class="visually-hidden">Больше</span>
     </button>

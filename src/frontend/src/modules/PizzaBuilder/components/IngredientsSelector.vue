@@ -65,26 +65,26 @@ export default {
       <ul class="ingredients-selector__list">
         <li
           v-for="ingredient in ingredients"
-          class="ingredients-selector__item"
           :key="ingredient.id"
+          class="ingredients-selector__item"
           :style="{
             '--ingredientIconURL': 'url(' + ingredient.image + ')',
           }"
         >
           <span
             :draggable="ingredient.count < 3"
+            class="filling"
             @dragstart="
               handleDragStart($event, ingredient.id, ingredient.count)
             "
-            class="filling"
             >{{ ingredient.name }}</span
           >
 
           <BasicCounter
-            @change="handleIngredientChange"
             :itemId="ingredient.id"
             :count="ingredient.count"
             mix="ingredients-selector__counter"
+            @change="handleIngredientChange"
           />
         </li>
       </ul>

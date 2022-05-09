@@ -28,9 +28,9 @@ export default {
     <input
       :value="value"
       :checked="checked"
-      @change="handleChange"
       type="radio"
       class="radio__input"
+      @change="handleChange"
     />
     <span class="radio__label">{{ label }}</span>
   </label>
