@@ -1,4 +1,6 @@
 <script>
+import { maxIngredientCount } from "@/constants/pizza";
+
 export default {
   name: "BasicCounter",
   props: {
@@ -29,6 +31,11 @@ export default {
       });
     },
   },
+  computed: {
+    maxIngredientCount() {
+      return maxIngredientCount;
+    },
+  },
 };
 </script>
 
@@ -52,7 +59,7 @@ export default {
     />
 
     <button
-      :disabled="count === 3"
+      :disabled="count === maxIngredientCount"
       type="button"
       class="basic-counter__button basic-counter__button--plus"
       @click="handleCountIncrease"

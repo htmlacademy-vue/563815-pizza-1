@@ -8,6 +8,7 @@ import PizzaPreview from "@/modules/PizzaBuilder/components/PizzaPreview";
 import DoughSelector from "@/modules/PizzaBuilder/components/DoughSelector";
 import DiameterSelector from "@/modules/PizzaBuilder/components/DiameterSelector";
 import IngredientsSelector from "@/modules/PizzaBuilder/components/IngredientsSelector";
+import { maxIngredientCount } from "@/constants/pizza";
 
 const initialIngredientsState = pizza.ingredients.map((item) => ({
   ...item,
@@ -53,8 +54,8 @@ export default {
 
       if (index >= 0) {
         const newItems = [...this.pizzaIngredients];
-        if (count > 3) {
-          newItems[index].count = 3;
+        if (count > maxIngredientCount) {
+          newItems[index].count = maxIngredientCount;
         } else if (count < 0) {
           newItems[index].count = 0;
         } else {

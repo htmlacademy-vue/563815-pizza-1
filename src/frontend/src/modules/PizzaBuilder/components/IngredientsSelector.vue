@@ -1,6 +1,7 @@
 <script>
 import RadioField from "@/common/components/RadioField";
 import BasicCounter from "@/common/components/BasicCounter";
+import { maxIngredientCount } from "@/constants/pizza";
 import pizza from "@/static/pizza.json";
 
 export default {
@@ -35,6 +36,11 @@ export default {
     handleDragStart(event, id, count) {
       event.dataTransfer.setData("ingredientId", id);
       event.dataTransfer.setData("ingredientCount", count);
+    },
+  },
+  computed: {
+    maxIngredientCount() {
+      return maxIngredientCount;
     },
   },
 };
@@ -72,7 +78,7 @@ export default {
           }"
         >
           <span
-            :draggable="ingredient.count < 3"
+            :draggable="ingredient.count < maxIngredientCount"
             class="filling"
             @dragstart="
               handleDragStart($event, ingredient.id, ingredient.count)
