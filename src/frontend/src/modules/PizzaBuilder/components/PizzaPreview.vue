@@ -1,15 +1,95 @@
 <script>
 export default {
   name: "PizzaPreview",
+  props: {
+    ingredients: {
+      type: Array,
+      required: true,
+    },
+    sauce: {
+      type: Object,
+      required: true,
+    },
+    dough: {
+      type: Object,
+      required: true,
+    },
+    size: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    selectedIngredients() {
+      return this.ingredients.filter((ingredient) => ingredient.count > 0);
+    },
+    isBigSize() {
+      return this.dough.id === "2";
+    },
+    selectedSauceLabel() {
+      return (
+        (this.sauce.id === "1" && "tomato") ||
+        (this.sauce.id === "2" && "creamy")
+      );
+    },
+  },
+  methods: {
+    getIngredientLabel(id) {
+      switch (id) {
+        case "1":
+          return "mushrooms";
+        case "2":
+          return "cheddar";
+        case "3":
+          return "salami";
+        case "4":
+          return "ham";
+        case "5":
+          return "ananas";
+        case "6":
+          return "bacon";
+        case "7":
+          return "onion";
+        case "8":
+          return "chile";
+        case "9":
+          return "jalapeno";
+        case "10":
+          return "olives";
+        case "11":
+          return "tomatoes";
+        case "12":
+          return "salmon";
+        case "13":
+          return "mozzarella";
+        case "14":
+          return "parmesan";
+        case "15":
+          return "blue_cheese";
+      }
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="pizza pizza--foundation--big-tomato">
+  <div
+    :class="[
+      'pizza',
+      `pizza--foundation--${isBigSize ? 'big' : 'small'}-${selectedSauceLabel}`,
+    ]"
+  >
     <div class="pizza__wrapper">
-      <div class="pizza__filling pizza__filling--ananas"></div>
-      <div class="pizza__filling pizza__filling--bacon"></div>
-      <div class="pizza__filling pizza__filling--cheddar"></div>
+      <div
+        v-for="ingredient in selectedIngredients"
+        :key="ingredient.id"
+        :class="[
+          'pizza__filling',
+          `pizza__filling--${getIngredientLabel(ingredient.id)}`,
+          ingredient.count === 2 ? 'pizza__filling--second' : '',
+          ingredient.count === 3 ? 'pizza__filling--third' : '',
+        ]"
+      ></div>
     </div>
   </div>
 </template>

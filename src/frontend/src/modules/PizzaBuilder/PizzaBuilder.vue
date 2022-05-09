@@ -133,7 +133,12 @@ export default {
       </FormField>
 
       <div class="pizza-builder__constructor">
-        <PizzaPreview />
+        <PizzaPreview
+          :ingredients="pizzaIngredients"
+          :sauce="pizzaSauce"
+          :dough="pizzaDough"
+          :size="pizzaSize"
+        />
       </div>
 
       <div class="pizza-builder__result">
