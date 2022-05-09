@@ -40,6 +40,10 @@ export default {
 
       if (sauceData) this.onSauceChange(sauceData);
     },
+    handleDragStart(event, id, count) {
+      event.dataTransfer.setData("ingredientId", id);
+      event.dataTransfer.setData("ingredientCount", count);
+    },
   },
 };
 </script>
@@ -75,7 +79,14 @@ export default {
             '--ingredientIconURL': 'url(' + ingredient.image + ')',
           }"
         >
-          <span class="filling">{{ ingredient.name }}</span>
+          <span
+            :draggable="ingredient.count < 3"
+            @dragstart="
+              handleDragStart($event, ingredient.id, ingredient.count)
+            "
+            class="filling"
+            >{{ ingredient.name }}</span
+          >
 
           <BasicCounter
             :itemId="ingredient.id"

@@ -57,6 +57,12 @@ export default {
         this.pizzaIngredients = newItems;
       }
     },
+    handleIngredientDrop(event) {
+      const id = event.dataTransfer.getData("ingredientId");
+      const count = Number(event.dataTransfer.getData("ingredientCount"));
+
+      this.handleIngredientsChange(id, count + 1);
+    },
   },
   computed: {
     isReadyToCooking() {
@@ -132,7 +138,12 @@ export default {
         />
       </FormField>
 
-      <div class="pizza-builder__constructor">
+      <div
+        @dragenter.prevent
+        @dragover.prevent
+        @drop="handleIngredientDrop"
+        class="pizza-builder__constructor"
+      >
         <PizzaPreview
           :ingredients="pizzaIngredients"
           :sauce="pizzaSauce"
