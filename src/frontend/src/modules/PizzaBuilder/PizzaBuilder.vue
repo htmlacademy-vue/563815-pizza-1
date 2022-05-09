@@ -59,6 +59,14 @@ export default {
     },
   },
   computed: {
+    isReadyToCooking() {
+      const areThereIngredients = this.pizzaIngredients.some(
+        (ingr) => ingr.count > 0
+      );
+      const isThereTitle = this.pizzaTitle.length > 0;
+
+      return areThereIngredients && isThereTitle;
+    },
     price() {
       const sizePrice = Number(this.pizzaSize.multiplier);
       const { price: doughPrice } = this.pizzaDough;
@@ -130,7 +138,7 @@ export default {
 
       <div class="pizza-builder__result">
         <p>Итого: {{ price }} ₽</p>
-        <BasicButton :disabled="true">Готовьте!</BasicButton>
+        <BasicButton :disabled="!isReadyToCooking">Готовьте!</BasicButton>
       </div>
     </div>
   </div>
