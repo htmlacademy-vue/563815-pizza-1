@@ -23,10 +23,7 @@ export default {
 <template>
   <div class="form-field">
     <label
-      :class="{
-        'form-field__label': true,
-        'visually-hidden': mods.labelHidden,
-      }"
+      :class="['form-field__label', { 'visually-hidden': mods.labelHidden }]"
       :for="id"
     >
       {{ label }}
