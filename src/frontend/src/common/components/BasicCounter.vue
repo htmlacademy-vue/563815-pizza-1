@@ -59,7 +59,7 @@ export default {
     />
 
     <button
-      :disabled="count === maxIngredientCount"
+      :disabled="count >= maxIngredientCount"
       type="button"
       class="basic-counter__button basic-counter__button--plus"
       @click="handleCountIncrease"
