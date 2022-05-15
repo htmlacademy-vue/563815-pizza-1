@@ -29,6 +29,7 @@ module.exports = {
         alphabetical: true,
       },
     ],
+    "vue/attribute-hyphenation": ["error", "always"],
   },
   overrides: [
     {

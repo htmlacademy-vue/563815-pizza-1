@@ -87,7 +87,7 @@ export default {
           >
 
           <BasicCounter
-            :itemId="ingredient.id"
+            :item-id="ingredient.id"
             :count="ingredient.count"
             mix="ingredients-selector__counter"
             @change="handleIngredientChange"
