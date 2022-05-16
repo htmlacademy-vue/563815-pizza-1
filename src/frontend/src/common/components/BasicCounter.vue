@@ -17,6 +17,11 @@ export default {
       required: true,
     },
   },
+  computed: {
+    maxIngredientCount() {
+      return maxIngredientCount;
+    },
+  },
   methods: {
     handleCountIncrease() {
       this.$emit("change", { id: this.itemId, count: this.count + 1 });
@@ -29,11 +34,6 @@ export default {
         id: this.itemId,
         count: event.target.value,
       });
-    },
-  },
-  computed: {
-    maxIngredientCount() {
-      return maxIngredientCount;
     },
   },
 };

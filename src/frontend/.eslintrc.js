@@ -30,6 +30,7 @@ module.exports = {
       },
     ],
     "vue/attribute-hyphenation": ["error", "always"],
+    "vue/order-in-components": ["error"],
   },
   overrides: [
     {

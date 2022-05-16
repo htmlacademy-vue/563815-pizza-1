@@ -7,11 +7,6 @@ import pizza from "@/static/pizza.json";
 export default {
   name: "IngredientsSelector",
   components: { RadioField, BasicCounter },
-  data: function () {
-    return {
-      pizza,
-    };
-  },
   props: {
     sauce: {
       type: String,
@@ -20,6 +15,16 @@ export default {
     ingredients: {
       type: Array,
       required: true,
+    },
+  },
+  data: function () {
+    return {
+      pizza,
+    };
+  },
+  computed: {
+    maxIngredientCount() {
+      return maxIngredientCount;
     },
   },
   methods: {
@@ -36,11 +41,6 @@ export default {
     handleDragStart(event, id, count) {
       event.dataTransfer.setData("ingredientId", id);
       event.dataTransfer.setData("ingredientCount", count);
-    },
-  },
-  computed: {
-    maxIngredientCount() {
-      return maxIngredientCount;
     },
   },
 };

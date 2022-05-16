@@ -36,6 +36,32 @@ export default {
       pizzaIngredients: initialIngredientsState,
     };
   },
+  computed: {
+    isReadyToCooking() {
+      const areThereIngredients = this.pizzaIngredients.some(
+        (ingr) => ingr.count > 0
+      );
+
+      const isThereTitle = this.pizzaTitle.length > 0;
+
+      return areThereIngredients && isThereTitle;
+    },
+    price() {
+      const sizePrice = Number(this.pizzaSize.multiplier);
+      const { price: doughPrice } = this.pizzaDough;
+      const { price: saucePrice } = this.pizzaSauce;
+      const ingredientsPrice = this.pizzaIngredients.reduce(
+        (acc, ingredient) => {
+          return ingredient.count > 0
+            ? acc + ingredient.price * ingredient.count
+            : acc;
+        },
+        0
+      );
+
+      return sizePrice * (doughPrice + saucePrice + ingredientsPrice);
+    },
+  },
   methods: {
     handlePizzaTitleInput(value) {
       this.pizzaTitle = value;
@@ -70,32 +96,6 @@ export default {
       const count = Number(event.dataTransfer.getData("ingredientCount"));
 
       this.handleIngredientsChange({ id, count: count + 1 });
-    },
-  },
-  computed: {
-    isReadyToCooking() {
-      const areThereIngredients = this.pizzaIngredients.some(
-        (ingr) => ingr.count > 0
-      );
-
-      const isThereTitle = this.pizzaTitle.length > 0;
-
-      return areThereIngredients && isThereTitle;
-    },
-    price() {
-      const sizePrice = Number(this.pizzaSize.multiplier);
-      const { price: doughPrice } = this.pizzaDough;
-      const { price: saucePrice } = this.pizzaSauce;
-      const ingredientsPrice = this.pizzaIngredients.reduce(
-        (acc, ingredient) => {
-          return ingredient.count > 0
-            ? acc + ingredient.price * ingredient.count
-            : acc;
-        },
-        0
-      );
-
-      return sizePrice * (doughPrice + saucePrice + ingredientsPrice);
     },
   },
 };

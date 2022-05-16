@@ -3,16 +3,16 @@ import pizza from "@/static/pizza.json";
 
 export default {
   name: "DoughSelector",
-  data: function () {
-    return {
-      pizza,
-    };
-  },
   props: {
     value: {
       type: String,
       required: true,
     },
+  },
+  data: function () {
+    return {
+      pizza,
+    };
   },
   methods: {
     handleChange(event) {
