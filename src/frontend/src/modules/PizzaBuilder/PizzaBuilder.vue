@@ -107,7 +107,7 @@ export default {
       <SheetPanel title="Выберите тесто">
         <DoughSelector
           :value="pizzaDough.id"
-          @change="this.handlePizzaDoughChange"
+          @change="handlePizzaDoughChange"
         />
       </SheetPanel>
     </div>
@@ -116,7 +116,7 @@ export default {
       <SheetPanel title="Выберите размер">
         <DiameterSelector
           :value="pizzaSize.multiplier"
-          @change="this.handlePizzaSizeChange"
+          @change="handlePizzaSizeChange"
         />
       </SheetPanel>
     </div>
