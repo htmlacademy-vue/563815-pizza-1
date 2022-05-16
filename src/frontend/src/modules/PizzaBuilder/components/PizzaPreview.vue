@@ -1,11 +1,105 @@
+<script>
+export default {
+  name: "PizzaPreview",
+  props: {
+    ingredients: {
+      type: Array,
+      required: true,
+    },
+    sauce: {
+      type: Object,
+      required: true,
+    },
+    dough: {
+      type: Object,
+      required: true,
+    },
+    size: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    selectedIngredients() {
+      return this.ingredients.filter((ingredient) => ingredient.count > 0);
+    },
+    isBigSize() {
+      return this.dough.id === "2";
+    },
+    selectedSauceLabel() {
+      return (
+        (this.sauce.id === "1" && "tomato") ||
+        (this.sauce.id === "2" && "creamy")
+      );
+    },
+  },
+  methods: {
+    getIngredientLabel(id) {
+      switch (id) {
+        case "1":
+          return "mushrooms";
+        case "2":
+          return "cheddar";
+        case "3":
+          return "salami";
+        case "4":
+          return "ham";
+        case "5":
+          return "ananas";
+        case "6":
+          return "bacon";
+        case "7":
+          return "onion";
+        case "8":
+          return "chile";
+        case "9":
+          return "jalapeno";
+        case "10":
+          return "olives";
+        case "11":
+          return "tomatoes";
+        case "12":
+          return "salmon";
+        case "13":
+          return "mozzarella";
+        case "14":
+          return "parmesan";
+        case "15":
+          return "blue_cheese";
+      }
+    },
+  },
+};
+</script>
+
+<template>
+  <div
+    :class="[
+      'pizza',
+      `pizza--foundation--${isBigSize ? 'big' : 'small'}-${selectedSauceLabel}`,
+    ]"
+  >
+    <div class="pizza__wrapper">
+      <div
+        v-for="ingredient in selectedIngredients"
+        :key="ingredient.id"
+        :class="[
+          'pizza__filling',
+          `pizza__filling--${getIngredientLabel(ingredient.id)}`,
+          ingredient.count === 2 ? 'pizza__filling--second' : '',
+          ingredient.count === 3 ? 'pizza__filling--third' : '',
+        ]"
+      ></div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
 .pizza {
   position: relative;
-
   display: block;
-
   box-sizing: border-box;
   width: 100%;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -36,12 +130,9 @@
   position: absolute;
   top: 0;
   left: 0;
-
   display: block;
-
   width: 100%;
   height: 100%;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -114,3 +205,4 @@
     background-image: url("~@/assets/img/filling-big/tomatoes.svg");
   }
 }
+</style>
