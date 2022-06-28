@@ -1,14 +1,11 @@
 <script>
-import Index from "./views/Index";
-
 export default {
   name: "App",
-  components: { Index },
 };
 </script>
 
 <template>
-  <Index />
+  <router-view />
 </template>
 
 <style lang="scss">
