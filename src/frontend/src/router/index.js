@@ -5,6 +5,7 @@ import Index from "../views/Index.vue";
 import Login from "../views/Login.vue";
 import Orders from "../views/Orders.vue";
 import Profile from "../views/Profile.vue";
+import PageNotFound from "../views/PageNotFound";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: Profile,
+  },
+  {
+    path: "/*",
+    name: "404",
+    component: PageNotFound,
   },
 ];
 
