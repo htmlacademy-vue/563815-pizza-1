@@ -1,18 +1,9 @@
 <script>
-import BasicLayout from "@/layouts/BasicLayout";
-import BasicTitle from "@/common/components/BasicTitle";
-
 export default {
-  name: "Orders",
-  components: {
-    BasicTitle,
-    BasicLayout,
-  },
+  name: "Cart",
 };
 </script>
 
 <template>
-  <BasicLayout>
-    <BasicTitle :mods="{ size: 'big' }">Заказы</BasicTitle>
-  </BasicLayout>
+  <div>Контент страницы «Заказы»</div>
 </template>
