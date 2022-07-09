@@ -1,14 +1,19 @@
 <script>
-import Index from "./views/Index";
-
 export default {
   name: "App",
-  components: { Index },
+  computed: {
+    layout() {
+      const layout = this.$route.meta.layout;
+      return () => import(`@/layouts/${layout}.vue`);
+    },
+  },
 };
 </script>
 
 <template>
-  <Index />
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
 <style lang="scss">
